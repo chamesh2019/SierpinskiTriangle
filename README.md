@@ -13,7 +13,7 @@ pip install pygame
 ## Usage
 Clone the repository to your local machine:
 ```bash
-git clone https://github.com/your-username/sierpinski-triangle.git
+git clone https://github.com/chamesh2019/SierpinskiTriangle.git
 ```
 Navigate to the project directory and run the main script:
 ```bash
