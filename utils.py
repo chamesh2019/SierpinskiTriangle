@@ -8,7 +8,7 @@ class Point:
     x: int | float
     y: int | float
 
-Iterations = 100000
+Iterations = 25000
 
 def update(screen: pygame.Surface, start_point: Point, base_triangle: tuple[Point, Point, Point]) -> None:
     
