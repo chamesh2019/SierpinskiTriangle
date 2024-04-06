@@ -13,11 +13,26 @@ Iterations = 100000
 def update(screen: pygame.Surface, start_point: Point, base_triangle: tuple[Point, Point, Point]) -> None:
     
     current_point = start_point
+    current_iteration = 0
     
-    for _ in range(Iterations):
+    while current_iteration < Iterations:
+        current_iteration += 1
+        completion = current_iteration / Iterations * 100
+        
         new_point = find_middle_point(current_point, random.choice(base_triangle))
         draw_point(screen, new_point)
         current_point = new_point
+        pygame.display.flip()
+        
+        font = pygame.font.SysFont("Comic Sans MS", 30)
+        text = f"Iteration : {current_iteration}  "
+        text_surf = font.render(text, True, (255, 255, 255), (0, 0, 0))
+        
+        text = f"Completion : {round(completion, 2)}%   "
+        text_surf2 = font.render(text, True, (255, 255, 255), (0, 0, 0))
+        
+        screen.blit(text_surf, (10, 10))
+        screen.blit(text_surf2, (10, 40))
         pygame.display.flip()
         
         for event in pygame.event.get():
@@ -58,7 +73,7 @@ def find_middle_point(point1: Point, point2: Point) -> Point:
 
 
 def draw_point(screen: pygame.Surface, point: Point) -> None:
-    pygame.draw.circle(screen, (255, 255, 255), (point.x, point.y), 1)
+    pygame.draw.rect(screen, (255, 255, 255), (point.x - 1, point.y - 1, 1, 1))
     
 
 def calculate_cordinates(center: Point, radius: int, angle: int) -> Point:
